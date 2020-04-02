@@ -1,16 +1,24 @@
 class Trail{
-	constructor(x = 0, y = 0, length = 0, chlist = [], index = 0){
+	constructor(x = 0, y = 0, length = 0, chlist = [], index = 0, topLength = 0){
 		this.pos = createVector(x, y);
 		this.length = length;
 		this.chlist = chlist;
 		this.index = index;
+		this.topLength = topLength;
 		this.dead = false;
 	}
 
 	draw(){
+		if(this.length == this.topLength){
+			fill(255);
+		}else{
+			let c = color(0, 255, 0);
+			c.setAlpha(this.length / this.topLength * 155 + 100);
+			fill(c);
+		}
 		text(this.chlist[this.index], this.pos.x, this.pos.y);
 		if(this.length > 1){
-			new Trail(this.pos.x, this.pos.y - spacing, this.length - 1, this.chlist, this.index + 1).draw();
+			new Trail(this.pos.x, this.pos.y - spacing, this.length - 1, this.chlist, this.index + 1, this.topLength).draw();
 		}
 	}
 
@@ -24,7 +32,7 @@ class Trail{
 
 	static random(x){
 		let list = Trail.randomChlist();
-		return new Trail(x, 0, list.length, list);
+		return new Trail(x, 0, list.length, list, 0, list.length);
 	}
 
 	static randomChlist(){
