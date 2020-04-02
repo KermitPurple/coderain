@@ -1,5 +1,5 @@
 class VectorTrail extends Trail{
-	constructor(x = 0, y = 0, length = 0, chlist = [], index = 0, topLength = 0, angle = 0){
+	constructor(x = 0, y = 0, length = 0, chlist = [], index = 0, topLength = 0, angle = 0, steps = 0){
 		super(x, y, length, chlist, index, topLength)
 		this.dead = false;
 		this.angle = angle
@@ -7,6 +7,7 @@ class VectorTrail extends Trail{
 		let vy = sin(angle);
 		this.vel = createVector(vx, vy);
 		this.vel.setMag(spacing);
+		this.steps = steps
 	}
 
 	draw(){
@@ -22,7 +23,7 @@ class VectorTrail extends Trail{
 			fill(c);
 		}
 		text(this.chlist[this.index], this.pos.x, this.pos.y);
-		if(this.length > 1){
+		if(this.length > 1 && this.index > this.steps){
 			new VectorTrail(
 				this.pos.x - this.vel.x, 
 				this.pos.y - this.vel.y,
@@ -30,13 +31,15 @@ class VectorTrail extends Trail{
 				this.chlist,
 				this.index + 1,
 				this.topLength,
-				this.angle
+				this.angle,
+				this.steps
 			).draw();
 		}
 	}
 
 	update(){
 		this.pos.add(this.vel);
+		this.steps += 1
 		if(this.pos.x < 0 || this.pos.x > width || this.pos.y < 0 || this.pos.y > height){
 			this.dead = true;
 		}
