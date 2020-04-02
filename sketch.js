@@ -3,12 +3,14 @@ let trails = [];
 let colorScheme = 1;
 let backScheme = 0;
 let sync = true;
+let previousBurst;
 
 function setup(){
 	createCanvas(window.innerWidth - 20, window.innerHeight - 20);
 	textSize(32);
 	frameRate(35);
 	createTrails();
+	previousBurst = createVector(width/2, height/2);
 }
 
 function createTrails(){
@@ -69,15 +71,13 @@ function keyPressed(){
 }
 
 function mousePressed(){
-	colorScheme += 1;
-	if(colorScheme > 4){
-		colorScheme = 1;
-	}
+	burst(mouseX, mouseY);
+	previousBurst = createVector(mouseX, mouseY);
 }
 
-function burst(){
+function burst(x = width/2, y = height/2){
 	trails = [];
 	for(let i = 0; i < TWO_PI; i += TWO_PI/50){
-		trails.push(VectorTrail.burst(i));
+		trails.push(VectorTrail.burst(i, x, y));
 	}
 }
