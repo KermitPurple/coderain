@@ -1,11 +1,10 @@
 let spacing = 25;
 let trails = [];
+let colorScheme = 1;
 
 function setup(){
 	createCanvas(window.innerWidth - 20, window.innerHeight - 20);
 	textSize(32);
-	fill(0, 255, 0);
-	noStroke()
 	frameRate(35);
 	createTrails();
 }
@@ -31,4 +30,11 @@ function windowResized() {
 	resizeCanvas(window.innerWidth - 20, window.innerHeight - 20);
 	trails = [];
 	createTrails();
+}
+
+function keyPressed(){
+	if(keyCode > 48 && keyCode <= 57){
+		console.log(int(key));
+		colorScheme = int(key);
+	}
 }

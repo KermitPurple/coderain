@@ -12,7 +12,7 @@ class Trail{
 		if(this.length == this.topLength){
 			fill(255);
 		}else{
-			let c = color(0, 255, 0);
+			let c = this.getColor();
 			c.setAlpha(this.length / this.topLength * 155 + 100);
 			fill(c);
 		}
@@ -28,6 +28,18 @@ class Trail{
 		if(this.pos.y - this.length * spacing > height){
 			this.dead = true;
 		}
+	}
+
+	getColor(){
+		if(colorScheme == 1){
+			return color(0, 255, 0);
+		}else if(colorScheme == 2){
+			return color(255, 0, 0);
+		}else if(colorScheme == 3){
+			return color(0, 0, 255);
+		}
+		return color(0, 255, 0);
+
 	}
 
 	static random(x){
