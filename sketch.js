@@ -29,16 +29,20 @@ function draw(){
 		c = 255
 	}
 	background(c);
+	allDead = true
 	for(let i = trails.length - 1; i >= 0; i--){
 		trails[i].draw();
 		trails[i].update();
 		if(trails[i].dead){
 			if(trails[i].respawn){
 				trails[i] = Trail.random(trails[i].pos.x);
-			}else{
-				trails.pop(i);
 			}
+		}else{
+			allDead = false;
 		}
+	}
+	if(allDead){
+		burst();
 	}
 }
 
