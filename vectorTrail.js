@@ -24,8 +24,8 @@ class VectorTrail extends Trail{
 			fill(c);
 		}
 		text(this.chlist[this.index], this.pos.x, this.pos.y);
-		if(this.length > 1 && this.index > this.steps){
-			new VectorTrail(
+		if(this.length > 1 && this.index < this.steps){
+			this.dead = new VectorTrail(
 				this.pos.x - this.vel.x, 
 				this.pos.y - this.vel.y,
 				this.length - 1,
@@ -35,15 +35,16 @@ class VectorTrail extends Trail{
 				this.angle,
 				this.steps
 			).draw();
+			return this.dead;
+		}
+		if(this.pos.x < 0 || this.pos.y < 0 || this.pos.x > width || this.pos.y > height){
+			return true;
 		}
 	}
 
 	update(){
 		this.pos.add(this.vel);
-		this.steps += 1
-		if(this.pos.x < 0 || this.pos.x > width || this.pos.y < 0 || this.pos.y > height){
-			this.dead = true;
-		}
+		this.steps += 1;
 	}
 
 	static burst(angle = 0){

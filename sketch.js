@@ -69,7 +69,7 @@ function mousePressed(){
 
 function burst(){
 	trails = [];
-	for(let i = 0; i < TWO_PI; i += TWO_PI/3){
+	for(let i = 0; i < TWO_PI; i += TWO_PI/60){
 		trails.push(VectorTrail.burst(i));
 	}
 }
