@@ -1,6 +1,5 @@
 let spacing = 25;
 let trails = [];
-let vecTrails = [];
 let colorScheme = 1;
 let backScheme = 0;
 
@@ -9,7 +8,7 @@ function setup(){
 	textSize(32);
 	frameRate(35);
 	//createTrails();
-	vecTrails.push(VectorTrail.burst(0));
+	trails.push(VectorTrail.burst(0));
 }
 
 function createTrails(){
@@ -26,16 +25,12 @@ function draw(){
 		c = 255
 	}
 	background(c);
-	for(let i = 0; i < trails.length; i++){
+	for(let i = trails.length - 1; i >= 0; i--){
 		trails[i].draw();
 		trails[i].update();
 		if(trails[i].dead){
 			trails[i] = Trail.random(trails[i].pos.x);
 		}
-	}
-	for(let i = vecTrails.length - 1; i >= 0; i--){
-		vecTrails[i].draw();
-		vecTrails[i].update();
 	}
 }
 
