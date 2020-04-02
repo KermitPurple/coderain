@@ -41,7 +41,6 @@ function windowResized() {
 
 function keyPressed(){
 	if(keyCode > 48 && keyCode <= 57){
-		console.log(int(key));
 		colorScheme = int(key);
 	}
 	if(key == 'b'){

@@ -35,13 +35,17 @@ class Trail{
 	}
 
 	getColor(){
+		colorMode(RGB);
 		if(colorScheme == 1){
 			return color(0, 255, 0);
 		}else if(colorScheme == 2){
 			return color(255, 0, 0);
 		}else if(colorScheme == 3){
 			return color(0, 0, 255);
-		}
+		}else if(colorScheme == 4){
+			colorMode(HSB);
+			return color((this.pos.x + this.pos.y) % 255, 100, this.length / this.topLength * 50 + 50);
+		};
 		return color(0, 255, 0);
 
 	}
