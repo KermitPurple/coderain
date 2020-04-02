@@ -49,3 +49,10 @@ function keyPressed(){
 		backScheme = backScheme % 2;
 	}
 }
+
+function mousePressed(){
+	colorScheme += 1;
+	if(colorScheme > 4){
+		colorScheme = 1;
+	}
+}
