@@ -22,15 +22,13 @@ class Trail{
 		}
 	}
 
-	static random(){
-		let x = int(random(0, (width - 1) / spacing)) * spacing;
-		let y = int(random(1, height / spacing)) * spacing;
+	static random(x){
 		let list = Trail.randomChlist();
-		return new Trail(x, y, list.length, list);
+		return new Trail(x, 0, list.length, list);
 	}
 
 	static randomChlist(){
-		let length = int(random(10,20));
+		let length = int(random(10,30));
 		let list = [];
 		for(let i = 0; i < length; i++){
 			list.push(Trail.randomCh());
