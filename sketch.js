@@ -26,3 +26,9 @@ function draw(){
 		}
 	}
 }
+
+function windowResized() {
+	resizeCanvas(window.innerWidth - 20, window.innerHeight - 20);
+	trails = [];
+	createTrails();
+}
