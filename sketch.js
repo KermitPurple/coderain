@@ -2,6 +2,7 @@ let spacing = 25;
 let trails = [];
 let colorScheme = 1;
 let backScheme = 0;
+let sync = false;
 
 function setup(){
 	createCanvas(window.innerWidth - 20, window.innerHeight - 20);
@@ -33,8 +34,10 @@ function draw(){
 		trails[i].draw();
 		trails[i].update();
 		if(trails[i].dead){
-			if(trails[i].respawn){
+			if(trails[i].verticle){
 				trails[i] = Trail.random(trails[i].pos.x);
+			}else if(!sync){
+				trails[i] = VectorTrail.burst(trails[i].angle);
 			}
 		}else{
 			allDead = false;
@@ -56,10 +59,12 @@ function keyPressed(){
 	}else if(key == 'b'){
 		backScheme += 1;
 		backScheme = backScheme % 2;
-	}if(key == 'c'){
+	}else if(key == 'c'){
 		burst();
-	}if(key == ' '){
+	}else if(key == ' '){
 		createTrails();
+	}else if(key == 's'){
+		sync = !sync;
 	}
 }
 
