@@ -6,6 +6,7 @@ class Trail{
 		this.index = index;
 		this.topLength = topLength;
 		this.dead = false;
+		this.respawn = true;
 	}
 
 	draw(){

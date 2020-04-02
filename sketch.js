@@ -8,16 +8,20 @@ function setup(){
 	textSize(32);
 	frameRate(35);
 	//createTrails();
-	trails.push(VectorTrail.burst(0));
+	burst();
 }
 
 function createTrails(){
+	trails = [];
 	for(let i = 0; i < width; i += spacing){
 		trails.push(Trail.random(i))
 	}
 }
 
 function draw(){
+	if(trails.length == 0){
+		createTrails();
+	}
 	let c = 0;
 	if(backScheme == 0){
 		c = 0
@@ -29,24 +33,30 @@ function draw(){
 		trails[i].draw();
 		trails[i].update();
 		if(trails[i].dead){
-			trails[i] = Trail.random(trails[i].pos.x);
+			if(trails[i].respawn){
+				trails[i] = Trail.random(trails[i].pos.x);
+			}else{
+				trails.pop(i);
+			}
 		}
 	}
 }
 
 function windowResized() {
 	resizeCanvas(window.innerWidth - 20, window.innerHeight - 20);
-	trails = [];
 	createTrails();
 }
 
 function keyPressed(){
 	if(keyCode > 48 && keyCode <= 57){
 		colorScheme = int(key);
-	}
-	if(key == 'b'){
+	}else if(key == 'b'){
 		backScheme += 1;
 		backScheme = backScheme % 2;
+	}if(key == 'c'){
+		burst();
+	}if(key == ' '){
+		createTrails();
 	}
 }
 
@@ -54,5 +64,12 @@ function mousePressed(){
 	colorScheme += 1;
 	if(colorScheme > 4){
 		colorScheme = 1;
+	}
+}
+
+function burst(){
+	trails = [];
+	for(let i = 0; i < TWO_PI; i += TWO_PI/3){
+		trails.push(VectorTrail.burst(i));
 	}
 }

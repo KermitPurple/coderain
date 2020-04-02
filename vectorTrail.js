@@ -8,6 +8,7 @@ class VectorTrail extends Trail{
 		this.vel = createVector(vx, vy);
 		this.vel.setMag(spacing);
 		this.steps = steps
+		this.respawn = false;
 	}
 
 	draw(){
