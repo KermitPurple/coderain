@@ -10,7 +10,11 @@ class Trail{
 
 	draw(){
 		if(this.length == this.topLength){
-			fill(255);
+			if(backScheme == 0){
+				fill(255);
+			}else if(backScheme == 1){
+				fill(0);
+			}
 		}else{
 			let c = this.getColor();
 			c.setAlpha(this.length / this.topLength * 155 + 100);

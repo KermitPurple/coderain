@@ -1,6 +1,7 @@
 let spacing = 25;
 let trails = [];
 let colorScheme = 1;
+let backScheme = 0;
 
 function setup(){
 	createCanvas(window.innerWidth - 20, window.innerHeight - 20);
@@ -16,7 +17,13 @@ function createTrails(){
 }
 
 function draw(){
-	background(0);
+	let c = 0;
+	if(backScheme == 0){
+		c = 0
+	}else if(backScheme == 1){
+		c = 255
+	}
+	background(c);
 	for(let i = 0; i < trails.length; i++){
 		trails[i].draw();
 		trails[i].update();
@@ -36,5 +43,9 @@ function keyPressed(){
 	if(keyCode > 48 && keyCode <= 57){
 		console.log(int(key));
 		colorScheme = int(key);
+	}
+	if(key == 'b'){
+		backScheme += 1;
+		backScheme = backScheme % 2;
 	}
 }
