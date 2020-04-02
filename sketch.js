@@ -2,7 +2,7 @@ let spacing = 25;
 let trails = [];
 let colorScheme = 1;
 let backScheme = 0;
-let sync = false;
+let sync = true;
 
 function setup(){
 	createCanvas(window.innerWidth - 20, window.innerHeight - 20);
