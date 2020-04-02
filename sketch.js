@@ -7,6 +7,10 @@ function setup(){
 	fill(0, 255, 0);
 	noStroke()
 	frameRate(25);
+	createTrails();
+}
+
+function createTrails(){
 	for(let i = 0; i < width; i += spacing){
 		trails.push(Trail.random(i))
 	}
