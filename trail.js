@@ -36,7 +36,7 @@ class Trail{
 	}
 
 	static randomChlist(){
-		let length = int(random(10,30));
+		let length = int(random(20,50));
 		let list = [];
 		for(let i = 0; i < length; i++){
 			list.push(Trail.randomCh());
