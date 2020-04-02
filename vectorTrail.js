@@ -48,6 +48,7 @@ class VectorTrail extends Trail{
 	}
 
 	static burst(angle, x, y){
+		previousBurst = createVector(x, y);
 		let list = VectorTrail.randomChlist();
 		return new VectorTrail(x, y, list.length, list, 0, list.length, angle);
 	}

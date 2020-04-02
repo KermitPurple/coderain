@@ -46,7 +46,7 @@ function draw(){
 		}
 	}
 	if(allDead){
-		burst();
+		burst(previousBurst.x, previousBurst.y);
 	}
 }
 
@@ -72,7 +72,6 @@ function keyPressed(){
 
 function mousePressed(){
 	burst(mouseX, mouseY);
-	previousBurst = createVector(mouseX, mouseY);
 }
 
 function burst(x = width/2, y = height/2){
