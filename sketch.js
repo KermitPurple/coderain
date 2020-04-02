@@ -6,7 +6,7 @@ function setup(){
 	textSize(32);
 	fill(0, 255, 0);
 	noStroke()
-	frameRate(25);
+	frameRate(35);
 	createTrails();
 }
 
