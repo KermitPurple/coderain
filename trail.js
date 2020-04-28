@@ -50,6 +50,13 @@ class Trail{
 			}else if(backScheme == 1){
 				return color((this.pos.x + this.pos.y) % 360, this.length / this.topLength * 75 + 25, 100);
 			}
+		}else if(colorScheme == 5){
+			colorMode(HSB);
+            if(backScheme == 0){
+				return color((this.index * 10) % 360, 100, this.length / this.topLength * 75 + 25);
+            }else{
+                return color((this.index * 10) % 360, this.length / this.topLength * 75 + 25, 100);
+            }
         }
 		return color(0, 255, 0);
 
