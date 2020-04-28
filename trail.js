@@ -46,11 +46,11 @@ class Trail{
 		}else if(colorScheme == 4){
 			colorMode(HSB);
 			if(backScheme == 0){
-				return color((this.pos.x + this.pos.y) % 255, 100, this.length / this.topLength * 75 + 25);
+				return color((this.pos.x + this.pos.y) % 360, 100, this.length / this.topLength * 75 + 25);
 			}else if(backScheme == 1){
-				return color((this.pos.x + this.pos.y) % 255, this.length / this.topLength * 75 + 25, 100);
+				return color((this.pos.x + this.pos.y) % 360, this.length / this.topLength * 75 + 25, 100);
 			}
-		};
+        }
 		return color(0, 255, 0);
 
 	}
